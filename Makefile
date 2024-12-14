@@ -8,8 +8,7 @@ all: results/isles.dat \
 	results/figure/abyss.png \
 	results/figure/last.png \
 	results/figure/sierra.png \
-	report/count_report.html \
-	report/count_report.pdf
+	report/count_report.html
 
 # count the words
 results/isles.dat: scripts/wordcount.py data/isles.txt
@@ -54,7 +53,7 @@ results/figure/sierra.png: scripts/plotcount.py results/sierra.dat
 		--output_file=results/figure/sierra.png
 
 # write the report
-report/count_report.html report/count_report.pdf: results/figure/isles.png results/figure/abyss.png results/figure/last.png results/figure/sierra.png
+report/count_report.html: results/figure/isles.png results/figure/abyss.png results/figure/last.png results/figure/sierra.png
 	quarto render report/count_report.qmd
 
 clean:
@@ -66,5 +65,4 @@ clean:
 		results/figure/abyss.png \
 		results/figure/last.png \
 		results/figure/sierra.png
-	rm -f report/count_report.html \
-		report/count_report.pdf
+	rm -f report/count_report.html
